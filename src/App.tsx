@@ -39,16 +39,18 @@ function App() {
   };
 
   const addNewTask = (title: string, description: string, category: string) => {
-    setCurrentTasks((prev) => [
-      ...prev,
-      {
-        id: 1089,
-        category: category,
-        title: title,
-        description: description,
-        status: "pending",
-      },
-    ]);
+    setCurrentTasks((prev) => {
+      return [
+        ...prev,
+        {
+          id: prev?.length !== 0 ? prev[prev?.length - 1].id + 1 : 1,
+          category: category,
+          title: title,
+          description: description,
+          status: "pending",
+        },
+      ];
+    });
   };
 
   const searchTask = (category: string) => {
